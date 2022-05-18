@@ -26,7 +26,6 @@ void PrintArray(int[,] array)
 }
 void BubbleSort(int[,] array)
 {
-    
     for (int i = 0; i < array.GetLength(0); i++) // цикл для матрицы строк
     {
         for (int j = 0;  j < array.GetLength(1);  j++) //// цикл для матрицы столбцов
@@ -42,7 +41,6 @@ void BubbleSort(int[,] array)
             }
         }
     }
-    //return temp;
 }
 
 int[,] array = new int[5, 6];
