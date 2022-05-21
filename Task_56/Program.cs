@@ -4,58 +4,58 @@
 //1 1 1
 //5 6 7
 //-> вторая строка
-using System;
-using System.Collections.Generic;
- 
-public class MinSum
-{
-    public static int N;
- 
-    static List<int> colMinSum(int [,]mat)
-    {
-        int idx = -1; //переменная для хранения индекса строки
 
-        int minSum = int.MinValue; //переменная для хранения минимальной суммы
- 
-        for (int i = 0; i < N; i++) // Проход по строкам массива
-        {
-            int sum = 0;
-            for (int j = 0; j < N; j++)
-            {
-                sum -= mat[i, j];
-            }
-            if (minSum < sum)
-            {
-                minSum = sum;
-                idx = i;
-            }
-        }
-        List<int> res = new List<int>();
-        res.Add(idx);
-        res.Add(minSum);
- 
-        return res;
-    }
-    public static void Main(String[] args)
+void FillArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        N = 5;
-        int[,] mat = {
-            { 1, 2, 3, 4, 5 },
-            { 5, 3, 1, 4, 2 },
-            { 5, 6, 7, 8, 9 },
-            { 0, 6, 3, 4, 12 },
-            { 9, 7, 12, 4, 3 },
-        };
-        
-        List<int> ans = colMinSum(mat);
-        Console.WriteLine("Строка "+ (ans[0]+1)+ " имеет минимальную сумму чисел ");
+        for (int j = 0;  j < array.GetLength(1);  j++)
+            array[i, j] = new Random().Next(1, 100);
     }
 }
-/*
-int[,] array = new int[5, 6];
+void PrintArray(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0;  j < array.GetLength(1);  j++)
+            System.Console.Write($"{array[i, j], 4}"); 
+        System.Console.WriteLine();
+    }
+    System.Console.WriteLine();
+}
+void MinNum(int[] arr)
+{
+    int index = 0;
+    int min = arr[0];
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (arr[i] < min)
+        {
+            min = arr[i];  
+            index = i; 
+        }
+    }
+    Console.WriteLine($"Строка с индексом {index} имеет минимальную сумму {min} ");
+    
+    System.Console.WriteLine();
+    //return arr[i];
+}
+void SearchMinSum(int[,] array, int[] arr)
+{
+    for (int i = 0; i < array.GetLength(0); i++) 
+    {
+        int sum = 0;
+        for (int j = 0;  j < array.GetLength(1); j++) 
+        {
+            sum = sum + array[i, j];
+        }
+        arr[i] = sum;
+    } 
+}
+int N = 3;
+int[,] array = new int[N, 4];
+int[] arr = new int [N];
 FillArray(array);
 PrintArray(array);
-Kadane(array);
-//FindMinSum(array);
-//PrintArray(array);
-*/
+SearchMinSum(array, arr);
+MinNum(arr);
