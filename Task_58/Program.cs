@@ -28,7 +28,7 @@ void MultArray(int[,] array1, int[,] array2, int[,] result)
         for (int j = 0;  j < array1.GetLength(1);  j++) //// цикл для матрицы столбцов
         {
             result[i, j] = 0;
-            for (int k = 0;  k < array1.GetLength(1);  k++) // цикл для замены
+            for (int k = 0;  k < array1.GetLength(1);  k++) 
             {
                 result[i, j] += array1[i, k] * array2[k, j];
 
